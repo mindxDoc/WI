@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            width: 400px;
+            display: flex;
+            margin: 5px;
+            justify-content: space-between;
+            border-bottom: solid 1px darkred;
+        }
+
+        input {
+            margin-left: 40px;
+        }
+    </style>
+<body>
+<h1>Danh Sách Lớp Web Advanced 01</h1>
+<ul id="student-list"></ul>
+<input id="input">
+<button onClick="add()">add new</button>
+</body>
+</head>
+<body>
+
+<script>
+	let studentList = ["Đào Tuấn Anh", "Nguyễn Bá Mạnh", "Nguyễn Khắc Hoàng", "Chu Văn Dương", "Phạm Tiến Lập", "Nguyễn Phạm Hùng Anh"];
+	let studentListElement = document.querySelector('#student-list');
+
+	function renderStudent(student, index) {
+		var studentElement = document.createElement('LI')
+		var button = document.createElement('BUTTON')
+		button.textContent = 'delete'
+		button.addEventListener("click", function () {
+			remove(index)
+		});
+		studentElement.textContent = student
+		studentElement.appendChild(button)
+		studentListElement.appendChild(studentElement)
+	}
+
+	function renderStudents() {
+		studentListElement.innerHTML = '';
+		for (let i in studentList) {
+			renderStudent(studentList[i], i)
+		}
+	}
+
+	function add() {
+		const newStudent = document.querySelector('#input').value
+		studentList.push(newStudent)
+		renderStudents()
+	}
+
+	function remove(i) {
+		studentList.splice(i, 1);
+		renderStudents()
+	}
+
+	renderStudents();
+</script>
+</body>
+</html>
+

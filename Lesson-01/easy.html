@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<body>
+<h1>Danh Sách Lớp Web Advanced 01</h1>
+<ul id="student-list"></ul>
+</body>
+</head>
+<body>
+
+<script>
+	let studentList = ["Đào Tuấn Anh", "Nguyễn Bá Mạnh", "Nguyễn Khắc Hoàng", "Chu Văn Dương", "Phạm Tiến Lập", "Nguyễn Phạm Hùng Anh"];
+    let studentListElement = document.querySelector('#student-list');
+
+    function renderStudent(student) {
+        var studentElement = document.createElement('LI')
+	    studentElement.textContent = student
+	    studentListElement.appendChild(studentElement)
+    }
+
+    for (let i in studentList ) {
+    	renderStudent(studentList[i])
+    }
+</script>
+</body>
+</html>
+
