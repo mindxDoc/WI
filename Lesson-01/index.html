@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        li {
+            display: flex;
+        }
+    </style>
 <body>
 <h1>Danh Sách Lớp Web Advanced 01</h1>
 <ul id="student-list"></ul>
@@ -16,7 +21,10 @@
 
     function renderStudent(student) {
         var studentElement = document.createElement('LI')
+	    var button = document.createElement('BUTTON')
+	    button.textContent = 'delete'
 	    studentElement.textContent = student
+	    studentElement.appendChild(button)
 	    studentListElement.appendChild(studentElement)
     }
 
