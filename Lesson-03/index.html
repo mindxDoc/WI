@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-firestore.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <div class="login-container">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Username" id="email">
+            <input type="password" placeholder="Password" id="password">
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+</div>
+
+<div style="padding-left:16px">
+    <h2>Ví dụ mẫu về đăng nhập</h2>
+    <p>Navigation menu with a login form and a submit button inside of it.</p>
+    <p>Resize the browser window to see the responsive effect.</p>
+    <ul id="student-list"></ul>
+</div>
+
+<script>
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey: "AIzaSyCaWjz5nQif6q59FQNvru-QDCdgaBsRJ6I",
+		authDomain: "web-intensive-project-1.firebaseapp.com",
+		databaseURL: "https://web-intensive-project-1.firebaseio.com",
+		projectId: "web-intensive-project-1",
+		storageBucket: "web-intensive-project-1.appspot.com",
+		messagingSenderId: "511456398145",
+		appId: "1:511456398145:web:bb3958b380f6efa4ddafc0"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	const db = firebase.firestore();
+</script>
+<script src="app.js"></script>
+</body>
+</html>
