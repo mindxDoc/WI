@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            color: #555;
+        }
+
+        h1,
+        h2,
+        strong {
+            color: #333;
+        }
+
+        #allWrapper {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            display: flex;
+        }
+
+        #leftSidebar {
+            width: 50%;
+            height: 100%;
+            background-image: url(https://www.pictorem.com/uploads/sublim/3/sublim3_223955.jpg);
+            background-position: left;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+        }
+
+        #rightSidebar {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        input {
+            height: 5%;
+            width: 40%;
+            margin-bottom: 20px;
+        }
+
+        #signin {
+            height: 5%;
+            width: 40%;
+            background: #00ad5f;
+            color: whitesmoke;
+            transition-property: background-color;
+            transition-duration: 0.5s;
+        }
+
+        #signin:hover {
+            background-color: black;
+            color: white;
+        }
+
+        a {
+            color: #00ad5f;
+            transition-property: color;
+            transition-duration: 0.5s;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: black
+        }
+    </style>
+</head>
+
+<body>
+    <div id="allWrapper">
+        <div id="leftSidebar"></div>
+        <!-- <div id="centerOrContent"></div> -->
+        <div id="rightSidebar">
+            <h1>Login</h1>
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button id="signin" onclick="signIn()">SIGN IN</button>
+            <p>Don't have an account ? <a href="signup.html">Create account</a></p>
+            <p id="falseCASE"></p>
+        </div>
+    </div>
+    <script>
+        // let account_email = "123@123"
+        // let account_password = "1234"
+
+        function signIn() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let falseCase = document.getElementById("falseCASE")
+
+            let listUsers = JSON.parse(window.localStorage.getItem('users'))
+            let listPassword = JSON.parse(window.localStorage.getItem('password'))
+            let isLogin = false
+            // if (account_email === email && account_password === password){
+            //     window.location.href = "./index.html";
+            // }else {
+            //     falseCase.innerHTML = "Wrong email or password, please try again!!"
+            //     falseCase.style.color = "red"
+            //     falseCase.style.display = "block"
+            // }
+            if (listUsers === null) {
+
+                falseCase.innerHTML = "Wrong email or password, please try again!!"
+                falseCase.style.color = "red"
+
+            } else {
+                for (let i = 0; i <= listUsers.length; i++) {
+                    if (email === listUsers[i] && password === listPassword[i]) {
+                        falseCase.innerHTML = "Login successful"
+                        falseCase.style.color = "green"
+                        falseCase.style.display = "block"
+                        setTimeout(function () {
+                            window.localStorage.setItem("isLogin", true)
+                            window.location.href = "./index.html"
+                        }, 1000)
+                        isLogin = true;
+                    }
+                }
+                if (isLogin === false) {
+                    falseCase.innerHTML = "Wrong email or password, please try again!!"
+                    falseCase.style.color = "red"
+                    falseCase.style.display = "block"
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

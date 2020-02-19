@@ -1,0 +1,106 @@
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            height: 100%;
+            /* font-family: 'Varela Round', sans-serif; */
+        }
+
+        h1,
+        h2,
+        strong {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            justify-content: space-between;
+        }
+
+        .intro-block {
+            width: 25%;
+            margin: 0px 10px;
+            height: 50%;
+            padding: 10px;
+            color: white;
+            transition-property: background-color, color;
+            transition-duration: 0.5s;
+        }
+
+        .product {
+            width: 20%;
+            margin: 0px 10px;
+            height: 250px;
+            padding: 10px;
+        }
+
+        .product-img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .border {
+            border: 4px solid white;
+            border-radius: 5%;
+        }
+
+        .sale-text {
+            text-decoration: underline;
+            color: #FF4040;
+            font-weight: bold;
+        }
+
+        .bg {
+            /* The image used */
+            /* background-image: url("https://unity.com/sites/default/files/styles/16_9_xl_scale_width/public/2019-12/unity-heretic-homepage-hero.jpg?itok=Hr22LCJC"); */
+            background-image: url("https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/viVN/Images/originals-ss20-superstar-drop3-launch-hp-mh-small-courtside-v1-d_tcm337-455503.jpg");
+            /* Full height */
+            height: 100%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+
+        .btn {
+            border: 2px solid black;
+            background-color: white;
+            color: black;
+            padding: 14px 28px;
+            font-size: 16px;
+            margin-right: 10px;
+            /* cursor: pointer; */
+            border-radius: 5px;
+        }
+
+        /* Green */
+        .success {
+            border-color: #2196F3;
+            color: black;
+        }
+
+        .success:hover {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .dp-none{
+            display: none;
+        }
+
+        .dp-block {
+            display: block;
+        }
+
+        #infor-container{
+            padding: 50px 15%;
+        }
+
+        strong {
+            font-size: 1.5em;
+        }
+        

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            color: #555;
+        }
+
+        h1,
+        h2,
+        strong {
+            color: #333;
+        }
+
+        #allWrapper {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            display: flex;
+        }
+
+        #leftSidebar {
+            width: 50%;
+            height: 100%;
+            background-image: url(https://www.pictorem.com/uploads/sublim/3/sublim3_223955.jpg);
+            background-position: left;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin: 0;
+        }
+
+        #rightSidebar {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        input {
+            height: 5%;
+            width: 40%;
+            margin-bottom: 20px;
+        }
+
+        #signin {
+            height: 5%;
+            width: 40%;
+            background: #00ad5f;
+            color: whitesmoke;
+            transition-property: background-color;
+            transition-duration: 0.5s;
+        }
+
+        #signin:hover {
+            background-color: black;
+            color: white;
+        }
+
+        a {
+            color: #00ad5f;
+            transition-property: color;
+            transition-duration: 0.5s;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: black
+        }
+    </style>
+</head>
+
+<body>
+    <div id="allWrapper">
+        <div id="leftSidebar"></div>
+        <!-- <div id="centerOrContent"></div> -->
+        <div id="rightSidebar">
+            <h1>Sign up</h1>
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button id="signin" onclick="signUp()">SIGN UP</button>
+            <p>Already have an account ? <a href="login.html">Sign in now !</a></p>
+            <p id="CASE" style="display: none"></p>
+        </div>
+    </div>
+    <script>
+        function signUp() {
+            let isAccountExist = false
+            let listUsers = JSON.parse(window.localStorage.getItem('users'))
+            let listPassword = JSON.parse(window.localStorage.getItem('password'))
+            let input_email = document.getElementById("email").value;
+            let input_password = document.getElementById("password").value;
+            let output_case = document.getElementById("CASE")
+
+            if (listUsers != null) {
+                for (let i = 0; i < listUsers.length; i++) {
+                    if (input_email == listUsers[i]) {
+                        output_case.innerHTML = "Account already exist, choose different name"
+                        output_case.style.color = "red"
+                        output_case.style.display = "block"
+                        isAccountExist = true
+                    }
+                }
+                if (!isAccountExist) {
+                    listUsers.push(input_email)
+                    listPassword.push(input_password)
+                    window.localStorage.setItem("users", JSON.stringify(listUsers));
+                    window.localStorage.setItem("password", JSON.stringify(listPassword))
+                    output_case.innerHTML = "Sign up Succesful"
+                    output_case.style.color = "green"
+                    output_case.style.display = "block"
+                    setTimeout(function () {
+                        window.location.href = "./login.html";
+                    }, 2000)
+                }
+            } else {
+                listUsers = [input_email]
+                listPassword = [input_password]
+                window.localStorage.setItem("users", JSON.stringify(listUsers));
+                window.localStorage.setItem("password", JSON.stringify(listPassword))
+                output_case.innerHTML = "Sign up Succesful"
+                output_case.style.color = "green"
+                output_case.style.display = "block";
+                setTimeout(function () {
+                    window.location.href = "./login.html";
+                }, 2000)
+            }
+
+        }
+    </script>
+</body>
+
+</html>
