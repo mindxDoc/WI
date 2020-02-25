@@ -1,0 +1,109 @@
+<html> 
+<head> 
+   <style> 
+      .title{ 
+      margin-bottom: 10px; 
+      text-align:center; 
+      width: 210px; 
+      color:green; 
+      border: solid black 2px; 
+      } 
+      input[type="button"] 
+      { 
+      border: solid black 2px; 
+      width:100% 
+      } 
+      input[type="text"] 
+      { 
+      background-color:white; 
+      border: solid black 2px; 
+      width:100% 
+      } 
+   </style> 
+</head> 
+<body> 
+   <div class = title >Simple Basic Calculator With Exapmle</div>
+   <table border="1"> 
+      <tr> 
+         <td colspan="3"><input type="text" id="result"/></td> 
+         <td><input type="button" value="Clear" onclick="clr()"/> </td> 
+      </tr> 
+      <tr> 
+         <td><input type="button" value="1" onclick="dis('1')"/> </td> 
+         <td><input type="button" value="2" onclick="dis('2')"/> </td> 
+         <td><input type="button" value="3" onclick="dis('3')"/> </td> 
+         <td><input type="button" value="/" onclick="setOperrator('/')"/> </td> 
+      </tr> 
+      <tr> 
+         <td><input type="button" value="4" onclick="dis('4')"/> </td> 
+         <td><input type="button" value="5" onclick="dis('5')"/> </td> 
+         <td><input type="button" value="6" onclick="dis('6')"/> </td> 
+         <td><input type="button" value="-" onclick="setOperrator('-')"/> </td> 
+      </tr> 
+      <tr> 
+         <td><input type="button" value="7" onclick="dis('7')"/> </td> 
+         <td><input type="button" value="8" onclick="dis('8')"/> </td> 
+         <td><input type="button" value="9" onclick="dis('9')"/> </td> 
+         <td><input type="button" value="+" onclick="setOperrator('+')"/> </td> 
+      </tr> 
+      <tr> 
+         <td><input type="button" value="." onclick="dis('.')"/> </td> 
+         <td><input type="button" value="0" onclick="dis('0')"/> </td> 
+         <td><input type="button" value="=" onclick="solve()"/> </td> 
+         <td><input type="button" value="*" onclick="setOperrator('*')"/> </td> 
+      </tr> 
+   </table> 
+   <script> 
+   let temp_result = "";
+   let operator = ""
+    function dis(val) 
+    { 
+        let result = document.getElementById("result")
+        if(result.value === "+" || result.value === "-" || result.value === "*" || result.value === "/"){
+            result.value = ""
+        }
+       result.value += val;
+    }  
+    function setOperrator(user_operator) {
+        temp_result = document.getElementById("result").value;
+        operator = user_operator
+        document.getElementById("result").value = operator
+    }
+    function solve() 
+    { 
+       let second_input = document.getElementById("result").value 
+       console.log(temp_result, second_input, operator)
+       if(operator === "+")
+       {
+        temp_result = parseFloat(temp_result)
+        temp_result += parseFloat(second_input)
+        document.getElementById("result").value = temp_result
+       }
+       if(operator === "*")
+       {
+        temp_result = parseFloat(temp_result)
+        temp_result *= parseFloat(second_input)
+        document.getElementById("result").value = temp_result
+       }
+       if(operator === "-")
+       {
+        temp_result = parseFloat(temp_result)
+        temp_result -= parseFloat(second_input)
+        document.getElementById("result").value = temp_result
+       }
+       if(operator === "/")
+       {
+        temp_result = parseFloat(temp_result)
+        temp_result /= parseFloat(second_input)
+        document.getElementById("result").value = temp_result
+       }
+       operator =""
+    }  
+    function clr() 
+    { 
+       document.getElementById("result").value = "" 
+    } 
+ </script> 
+</body> 
+</html> 
+
